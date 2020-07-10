@@ -1,0 +1,47 @@
+{
+  "name": "space-f2e-calculator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "env-cmd -r .env-rc.js -e development react-scripts start",
+    "build:test": "env-cmd -r .env-rc.js -e test react-scripts build",
+    "build:production": "env-cmd -r .env-rc.js -e production react-scripts build"
+  },
+  "dependencies": {
+    "history": "^4.10.1",
+    "immer": "^7.0.5",
+    "ramda": "^0.27.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.0",
+    "redux": "^4.0.5",
+    "redux-actions": "^2.6.5",
+    "redux-observable": "^1.2.0",
+    "rxjs": "^6.5.4",
+    "styled-components": "^5.0.1",
+    "styled-normalize": "^8.0.7"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
+    "redux-devtools-extension": "^2.13.8"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
