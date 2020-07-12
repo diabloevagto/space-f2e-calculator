@@ -2,12 +2,6 @@ import { createAction } from 'redux-actions';
 
 let count = 0;
 
-const createRequestTypes = (baseType) => ({
-  REQUEST: `${baseType}_REQUEST`,
-  SUCCESS: `${baseType}_SUCCESS`,
-  FAILURE: `${baseType}_FAILURE`,
-});
-
 const addUniqueCount = (data) => {
   return Object.entries(data).reduce((accumulator, [key, value]) => {
     if (typeof value === 'object') {
@@ -31,4 +25,4 @@ const createRequestActions = (data) => {
   }, {});
 };
 
-export { createRequestTypes, addUniqueCount, createRequestActions };
+export { addUniqueCount, createRequestActions };

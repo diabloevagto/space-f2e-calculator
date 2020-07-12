@@ -1,7 +1,9 @@
-import { combineEpics } from 'redux-observable';
 import { combineReducers } from 'redux';
 
+import calculator from './calculator';
+
 export default {
-  rootEpic: combineEpics(...Object.values({})),
-  rootReducer: combineReducers({}),
+  rootReducer: combineReducers({
+    calculator: calculator.reducer,
+  }),
 };

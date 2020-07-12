@@ -33,7 +33,6 @@
 - redux
 - react-redux
 - redux-actions
-- redux-observable
 
 ## folder structure
 
@@ -65,7 +64,7 @@ ex. url `/users/{user}`, body `{user: 'facebook'}` 會將 url 替換成 `/users/
   - `WrapContext` 的 `Provider`
 
 - redux
-  - src/store/modules 裡面新增檔案，並且個別時做 type, epic, reducer
+  - src/store/modules 裡面新增檔案，並且個別時做 type, reducer
   - 增加到 src/store/modules/index.js 內
 
 ### src/style
