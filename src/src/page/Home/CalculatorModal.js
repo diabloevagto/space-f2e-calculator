@@ -41,6 +41,8 @@ export default React.memo((props) => {
           left: position.x,
           top: position.y,
           width: size.width > 768 ? 480 : 360,
+          bottom: null,
+          right: null,
         },
       };
     }
