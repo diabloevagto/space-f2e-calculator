@@ -2,6 +2,7 @@
   "name": "space-f2e-calculator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://diabloevagto.github.io/space-f2e-calculator",
   "scripts": {
     "start": "env-cmd -r .env-rc.js -e development react-scripts start",
     "build:test": "env-cmd -r .env-rc.js -e test react-scripts build",
