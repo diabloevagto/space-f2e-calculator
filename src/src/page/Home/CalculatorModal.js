@@ -5,6 +5,8 @@ import isMobile from 'src/utils/isMobile';
 import useDrag from 'src/hooks/useDrag';
 import useWindowInnerSize from 'src/hooks/useWindowInnerSize';
 
+import CalculatorContent from './CalculatorContent';
+
 ReactModal.setAppElement('#root');
 
 export default React.memo((props) => {
@@ -24,10 +26,12 @@ export default React.memo((props) => {
       rt = {
         content: {
           ...rt,
-          top: '50%',
+          top: null,
           bottom: 0,
           right: 0,
           left: 0,
+          height: size.height * 0.5,
+          width: size.width,
         },
       };
     } else {
@@ -36,7 +40,6 @@ export default React.memo((props) => {
           ...rt,
           left: position.x,
           top: position.y,
-          height: size.height * 0.7,
           width: size.width > 768 ? 480 : 360,
         },
       };
@@ -48,54 +51,7 @@ export default React.memo((props) => {
   return (
     <ReactModal isOpen={visible} onRequestClose={toggle} style={ModalStyle}>
       <div onMouseDown={onMouseDown}>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ea
-          reiciendis possimus inventore ratione laborum error maiores cum
-          molestiae? Rem repudiandae ex illum atque autem ut enim dicta quis
-          officiis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ea
-          reiciendis possimus inventore ratione laborum error maiores cum
-          molestiae? Rem repudiandae ex illum atque autem ut enim dicta quis
-          officiis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ea
-          reiciendis possimus inventore ratione laborum error maiores cum
-          molestiae? Rem repudiandae ex illum atque autem ut enim dicta quis
-          officiis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ea
-          reiciendis possimus inventore ratione laborum error maiores cum
-          molestiae? Rem repudiandae ex illum atque autem ut enim dicta quis
-          officiis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ea
-          reiciendis possimus inventore ratione laborum error maiores cum
-          molestiae? Rem repudiandae ex illum atque autem ut enim dicta quis
-          officiis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ea
-          reiciendis possimus inventore ratione laborum error maiores cum
-          molestiae? Rem repudiandae ex illum atque autem ut enim dicta quis
-          officiis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ea
-          reiciendis possimus inventore ratione laborum error maiores cum
-          molestiae? Rem repudiandae ex illum atque autem ut enim dicta quis
-          officiis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ea
-          reiciendis possimus inventore ratione laborum error maiores cum
-          molestiae? Rem repudiandae ex illum atque autem ut enim dicta quis
-          officiis!
-        </p>
+        <CalculatorContent size={ModalStyle.content} />
       </div>
     </ReactModal>
   );
