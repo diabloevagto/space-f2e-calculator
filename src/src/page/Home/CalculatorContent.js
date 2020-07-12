@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 import calculatorRedux from 'src/store/modules/calculator';
@@ -42,7 +42,7 @@ const Content = styled.div`
     font-size: ${(props) => `${props.blockSize * 0.3}px`};
     border-radius: ${(props) => `${props.blockSize * 0.5}px`};
 
-    &:active {
+    &:active:not(#result):not(#expression) {
       color: red;
     }
   }
@@ -78,6 +78,7 @@ const Content = styled.div`
 
 export default React.memo((props) => {
   const {
+    isOpen,
     size: { height, width },
   } = props;
 
@@ -109,9 +110,28 @@ export default React.memo((props) => {
     'dot',
   ];
 
-  const onClick = (operators) => {
-    dispatch(calculatorRedux.action.ADD_OPERATOR(operators));
-  };
+  const onClick = useCallback(
+    (operators) => {
+      dispatch(calculatorRedux.action.ADD_OPERATOR(operators));
+    },
+    [dispatch],
+  );
+
+  useEffect(() => {
+    const keyHandle = ({ key }) => {
+      if (isOpen) {
+        console.log(key);
+        onClick(key === 'Enter' ? '=' : key);
+      }
+    };
+
+    window.addEventListener('keyup', keyHandle);
+
+    return () => {
+      console.log('dis');
+      window.removeEventListener('keyup', keyHandle);
+    };
+  }, [isOpen, onClick]);
 
   return (
     <Content blockSize={blockSize} blockList={blockList}>

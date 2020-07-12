@@ -53,7 +53,7 @@ export default React.memo((props) => {
   return (
     <ReactModal isOpen={visible} onRequestClose={toggle} style={ModalStyle}>
       <div onMouseDown={onMouseDown}>
-        <CalculatorContent size={ModalStyle.content} />
+        <CalculatorContent isOpen={visible} size={ModalStyle.content} />
       </div>
     </ReactModal>
   );
