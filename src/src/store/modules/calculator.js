@@ -5,31 +5,21 @@ import { addUniqueCount, createRequestActions } from 'src/utils/wrapAction';
 
 // ------------------------- action -------------------------
 const type = addUniqueCount({
-  GET_USER: 'GET_USER',
+  ADD_OPERATOR: 'ADD_OPERATOR',
 });
 const action = createRequestActions(type);
 
 // ------------------------- reducer -------------------------
 const initialState = {
-  isLoading: false,
-  response: null,
-  error: null,
+  operators: [],
+  currentVal: 0,
 };
 
 const reducer = handleActions(
   {
-    [type.GET_USER.REQUEST]: produce((draft) => {
-      draft.isLoading = true;
-      draft.response = null;
-      draft.error = null;
-    }),
-    [type.GET_USER.SUCCESS]: produce((draft, { payload }) => {
-      draft.isLoading = false;
-      draft.response = payload;
-    }),
-    [type.GET_USER.FAILURE]: produce((draft, { payload }) => {
-      draft.isLoading = false;
-      draft.error = payload;
+    [type.ADD_OPERATOR]: produce((draft, { payload }) => {
+      draft.operators.push(payload);
+      draft.currentVal = payload;
     }),
   },
   initialState,
