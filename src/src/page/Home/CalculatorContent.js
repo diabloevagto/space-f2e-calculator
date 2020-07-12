@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import calculatorStore from 'src/store/modules/calculator';
+import calculatorRedux from 'src/store/modules/calculator';
 
 const Content = styled.div`
   background-image: linear-gradient(to bottom, #84baff, #0b0e1c);
@@ -11,7 +11,7 @@ const Content = styled.div`
   grid-template-rows: ${(props) => `repeat(7, ${props.blockSize}px)`};
   grid-template-columns: ${(props) => `repeat(4, ${props.blockSize}px)`};
   grid-template-areas:
-    '. . . .'
+    'expression expression expression expression'
     'result result result result'
     'ac positive-negative percentage divide'
     'num-7 num-8 num-9 multiply'
@@ -47,7 +47,8 @@ const Content = styled.div`
     }
   }
 
-  > #result {
+  > #result,
+  #expression {
     justify-content: flex-end;
     padding-right: ${(props) => `${props.blockSize * 0.1}px`};
     font-size: ${(props) => `${props.blockSize * 0.7}px`};
@@ -80,11 +81,12 @@ export default React.memo((props) => {
     size: { height, width },
   } = props;
 
-  const currentVal = useSelector((state) => state.calculator.currentVal);
+  const calculatorStore = useSelector((state) => state.calculator);
 
   const dispatch = useDispatch();
   const blockSize = Math.max(height / 7 || 0, width / 4 || 0);
   const blockList = [
+    'expression',
     'result',
     'ac',
     'positive-negative',
@@ -108,19 +110,22 @@ export default React.memo((props) => {
   ];
 
   const onClick = (operators) => {
-    dispatch(calculatorStore.action.ADD_OPERATOR(operators));
+    dispatch(calculatorRedux.action.ADD_OPERATOR(operators));
   };
 
   return (
     <Content blockSize={blockSize} blockList={blockList}>
+      <div className="font-white" id="expression">
+        {calculatorStore.expression}
+      </div>
       <div className="font-white" id="result">
-        {currentVal}
+        {calculatorStore.currentVal}
       </div>
       {/*  */}
       <div className="gray-circle" id="ac" onClick={() => onClick('ac')}>
         AC
       </div>
-      <div
+      {/* <div
         className="gray-circle"
         id="positive-negative"
         onClick={() => onClick('+/-')}
@@ -129,7 +134,7 @@ export default React.memo((props) => {
       </div>
       <div className="gray-circle" id="percentage" onClick={() => onClick('%')}>
         %
-      </div>
+      </div> */}
       {/*  */}
       <div
         className="font-white blue-circle"
@@ -148,14 +153,14 @@ export default React.memo((props) => {
       <div
         className="font-white blue-circle"
         id="multiply"
-        onClick={() => onClick('×')}
+        onClick={() => onClick('*')}
       >
         ×
       </div>
       <div
         className="font-white blue-circle"
         id="divide"
-        onClick={() => onClick('÷')}
+        onClick={() => onClick('/')}
       >
         ÷
       </div>

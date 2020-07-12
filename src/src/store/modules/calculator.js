@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
-import produce from 'immer';
+import calc from 'fp-calculator';
+import produce, { current } from 'immer';
 
 import { addUniqueCount, createRequestActions } from 'src/utils/wrapAction';
 
@@ -13,13 +14,30 @@ const action = createRequestActions(type);
 const initialState = {
   operators: [],
   currentVal: 0,
+  expression: '',
 };
 
 const reducer = handleActions(
   {
     [type.ADD_OPERATOR]: produce((draft, { payload }) => {
-      draft.operators.push(payload);
-      draft.currentVal = payload;
+      if (payload === '+/-') {
+        // todo
+      } else if (payload === '%') {
+        // todo
+      } else {
+        draft.operators.push(payload);
+
+        const c = current(draft).operators.reduce((c, action) => {
+          return calc(action, c.prevAction, c.display, c.expression);
+        }, calc());
+
+        draft.currentVal = c.display;
+        draft.expression = c.expression;
+
+        if (c.prevAction === 'ac') {
+          draft.operators = [];
+        }
+      }
     }),
   },
   initialState,
