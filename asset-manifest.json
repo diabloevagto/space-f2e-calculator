@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.js": "/space-f2e-calculator/static/js/main.3ea653ba.chunk.js",
+    "runtime-main.js": "/space-f2e-calculator/static/js/runtime-main.567c0e92.js",
+    "static/js/2.7d38628a.chunk.js": "/space-f2e-calculator/static/js/2.7d38628a.chunk.js",
+    "index.html": "/space-f2e-calculator/index.html",
+    "precache-manifest.c83f4cbe41462d611f74935a5a5ed540.js": "/space-f2e-calculator/precache-manifest.c83f4cbe41462d611f74935a5a5ed540.js",
+    "service-worker.js": "/space-f2e-calculator/service-worker.js",
+    "static/js/2.7d38628a.chunk.js.LICENSE.txt": "/space-f2e-calculator/static/js/2.7d38628a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.567c0e92.js",
+    "static/js/2.7d38628a.chunk.js",
+    "static/js/main.3ea653ba.chunk.js"
+  ]
+}
